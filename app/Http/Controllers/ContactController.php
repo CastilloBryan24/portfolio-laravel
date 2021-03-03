@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Contact;
 use App\Models\Contact2;
 use App\Models\Contact3;
@@ -38,6 +39,12 @@ class ContactController extends Controller
         return view("boContact", compact("contact"));
     }
 
+    public function boClient()
+    {
+        $client = Client::all();
+        return view("boClient", compact("client"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,6 +74,25 @@ class ContactController extends Controller
         $store->icone = $request->icone;
         $store->title = $request->title;
         $store->data = $request->data;
+        $store->save();
+        return redirect()->back();
+    }
+
+    public function client(Request $request)
+    {
+
+        $validation = $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "subject" => "required",
+            "message" => "required"
+        ]); 
+
+        $store = new Client;
+        $store->name = $request->name;
+        $store->email = $request->email;
+        $store->subject = $request->subject;
+        $store->message = $request->message;
         $store->save();
         return redirect()->back();
     }

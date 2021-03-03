@@ -24,7 +24,7 @@ Route::get('/resume', [ResumeController::class, "index"]);
 Route::get('/portfolio', [PortfolioController::class, "index"]);
 Route::get('/contact', [ContactController::class, "index"]);
 
-Route::get("/backoffice", function () {
+Route::get("/qsdfg$", function () {
     return view("template.second");
 });
 
@@ -35,6 +35,7 @@ Route::get('/boEducation', [ResumeController::class, "boEducation"]);
 Route::get('/boSummary', [ResumeController::class, "boSummary"]);
 Route::get('/boExperience', [ResumeController::class, "boExperience"]);
 Route::get('/boContact', [ContactController::class, "boContact"]);
+Route::get('/boClient', [ContactController::class, "boClient"]);
 
 //Social
 Route::get('/edit-social/{id}', [HomeController::class, "edit"]);
@@ -89,5 +90,8 @@ Route::get('/edit-contact/{id}', [ContactController::class, "edit"]);
 Route::post('/delete-contact/{id}', [ContactController::class, "destroy"]);
 Route::post('/update-contact/{id}', [ContactController::class, "update"]);
 Route::post('/contact-store', [ContactController::class, "store"]);
+
+// Client
+Route::post('/client-store', [ContactController::class, "client"]);
 
 // {{old("icone") ? old("icone") : $data->name}}
