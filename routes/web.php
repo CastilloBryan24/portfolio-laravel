@@ -17,13 +17,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Page
 Route::get('/', [HomeController::class, "index"]);
 Route::get('/about', [AboutController::class, "index"]);
 Route::get('/resume', [ResumeController::class, "index"]);
 Route::get('/portfolio', [PortfolioController::class, "index"]);
 Route::get('/contact', [ContactController::class, "index"]);
 
+// Backoffice
 Route::get("/qsdfg$", function () {
     return view("template.second");
 });
@@ -84,7 +85,6 @@ Route::post('/education-store', [ResumeController::class, "add2"]);
 Route::post('/delete-education/{id}', [ResumeController::class, "delete4"]);
 Route::post('/update-education/{id}', [ResumeController::class, "maj4"]);
 
-
 // Contact
 Route::get('/edit-contact/{id}', [ContactController::class, "edit"]);
 Route::post('/delete-contact/{id}', [ContactController::class, "destroy"]);
@@ -93,5 +93,3 @@ Route::post('/contact-store', [ContactController::class, "store"]);
 
 // Client
 Route::post('/client-store', [ContactController::class, "client"]);
-
-// {{old("icone") ? old("icone") : $data->name}}

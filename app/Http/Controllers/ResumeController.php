@@ -189,6 +189,23 @@ class ResumeController extends Controller
         return redirect("boExperience");
     }
 
+    // public function edit($id)
+    // {
+    //     $edit = Experience::find($id);
+    //     return view("editExperience", compact("edit"));
+    // }
+
+    // public function store(Request $request)
+    // {
+    //     $store = new Experience;
+    //     $store->name = $request->name;
+    //     $store->date = $request->date;
+    //     $store->place = $request->place;
+    //     $store->save();
+    //     return redirect()->back();
+    // }
+
+
     public function maj(Request $request, $id)
     {
         $update = Experience2::find($id);
