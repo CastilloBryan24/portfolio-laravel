@@ -31,6 +31,9 @@
               <a class="nav-link" href="/boNav">Nav</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/boPortfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/boClient">Demande</a>
             </li>
           </ul>

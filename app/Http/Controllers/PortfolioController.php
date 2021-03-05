@@ -10,6 +10,7 @@ use App\Models\PFimg;
 use App\Models\PFnav;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -28,7 +29,6 @@ class PortfolioController extends Controller
         $navigation = PFnav::all();
         $image = PFimg::all();
         return view("portfolio", compact("nav1", "nav2", "nav3", "footer", "portfolio", "navigation", "image"));
-
     }
 
     /**
@@ -36,9 +36,10 @@ class PortfolioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function boPortfolio()
     {
-        //
+        $portfolio = PFimg::all();
+        return view("boPortfolio", compact("portfolio"));
     }
 
     /**
@@ -49,7 +50,24 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            "filter" => "required",
+            "picture" => "required",
+            "name1" => "required",
+            "name2" => "required",
+            "picture2" => "required"
+        ]); 
+
+        $store = new PFimg;
+        $store->filter = $request->filter;
+        $store->name1 = $request->name1;
+        $store->name2 = $request->name2;
+        Storage::put('public/img/', $request->file('picture'));
+        Storage::put('public/img/', $request->file('picture2'));
+        $store->picture = $request->file('picture')->hashName();
+        $store->picture2 = $request->file('picture2')->hashName();
+        $store->save();
+        return redirect()->back();
     }
 
     /**
@@ -96,6 +114,12 @@ class PortfolioController extends Controller
     {
         //
     }
+
+    public function download($id)
+    {
+        $down = PFimg::find($id);
+        return Storage::download('public/img/'.$down->picture);
+    }
 }
 
 
@@ -108,4 +132,3 @@ class PortfolioController extends Controller
 // $store->save();
 // return redirect()->back();
 // }
-

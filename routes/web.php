@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Page
-Route::get('/', [HomeController::class, "index"]);
-Route::get('/about', [AboutController::class, "index"]);
-Route::get('/resume', [ResumeController::class, "index"]);
-Route::get('/portfolio', [PortfolioController::class, "index"]);
-Route::get('/contact', [ContactController::class, "index"]);
+Route::get('/', [HomeController::class, "index"])->name("home");
+Route::get('/about', [AboutController::class, "index"])->name("about");;
+Route::get('/resume', [ResumeController::class, "index"])->name("resume");;
+Route::get('/portfolio', [PortfolioController::class, "index"])->name("portfolio");;
+Route::get('/contact', [ContactController::class, "index"])->name("contact");;
 
 // Backoffice
 Route::get("/qsdfg$", function () {
@@ -37,6 +37,11 @@ Route::get('/boSummary', [ResumeController::class, "boSummary"]);
 Route::get('/boExperience', [ResumeController::class, "boExperience"]);
 Route::get('/boContact', [ContactController::class, "boContact"]);
 Route::get('/boClient', [ContactController::class, "boClient"]);
+Route::get('/boPortfolio', [PortfolioController::class, "boPortfolio"]);
+
+// Portfolio
+Route::post('/portfolio-store', [PortfolioController::class, "store"]);
+Route::get('/download-files/{id}', [PortfolioController::class, "download"]);
 
 //Social
 Route::get('/edit-social/{id}', [HomeController::class, "edit"]);
