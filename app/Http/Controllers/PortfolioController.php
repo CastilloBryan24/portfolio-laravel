@@ -49,7 +49,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -97,3 +97,15 @@ class PortfolioController extends Controller
         //
     }
 }
+
+
+// $store = new Member;
+// $store->name = $request->name;
+// $store->age = $request->age;
+// $store->genre = $request->genre;
+// Storage::put('public/img/', $request->file('src'));
+// $store->src = $request->file('src')->hashName();
+// $store->save();
+// return redirect()->back();
+// }
+
